@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://hosted.kaseya.com/webservices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://hosted.kaseya.com/webservices/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://hosted.kaseya.com/webservices/">
+      <s:element name="CreateTrialAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Request" type="tns:TrialRequest"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TrialRequest">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="CustomerName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="OrganizationName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Email" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Trial" type="tns:TrialType"/>
+          <s:element maxOccurs="1" minOccurs="1" name="BackupMembership" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="1" name="SecurityMembership" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="1" name="UserStateMembership" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Language" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="EncPwd" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Pwd" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="TrialID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ZipCode" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="AccType" type="tns:AccountType"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PromoCode" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="State" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Acode" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="WebsiteGUID" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="TrialType">
+        <s:restriction base="s:string">
+          <s:enumeration value="_TrialPPS"/>
+          <s:enumeration value="_TrialMSP"/>
+          <s:enumeration value="_TrialExpress"/>
+          <s:enumeration value="_ascii"/>
+          <s:enumeration value="_OD_ITAM"/>
+          <s:enumeration value="_OD_KES"/>
+          <s:enumeration value="_OD_PM"/>
+          <s:enumeration value="TSuite"/>
+          <s:enumeration value="None"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="AccountType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Account"/>
+          <s:enumeration value="Tenant"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CreateTrialAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="CreateTrialAccountResult" type="tns:TrialResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TrialResponse">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="Group" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Url" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="EndDate" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Agents" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Admins" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ErrorMessage" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="CustomerID" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="0" name="AccountID" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TestCreateTrialAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Request" type="tns:TrialRequest"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestCreateTrialAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="TestCreateTrialAccountResult" type="tns:TrialResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateTrialAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Request" type="tns:TrialRequest"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateTrialAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ValidateTrialAccountResult" type="tns:TrialResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidatePromoCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Request" type="tns:PromoCodeRequest"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PromoCodeRequest">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="PromoCode" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ValidatePromoCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ValidatePromoCodeResult" type="tns:PromoCodeResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PromoCodeResponse">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="ServiceID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ErrorMessage" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PartnerName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="PartnerOwner" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateTrialAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Request" type="tns:UpdateTrialRequest"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UpdateTrialRequest">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="CustomerID" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="0" name="CustomerInternalID" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ContactInternalID" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateTrialAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UpdateTrialAccountResult" type="tns:UpdateTrialResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UpdateTrialResponse">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ErrorMessage" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ClearCache">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ClearCacheResponse">
+        <s:complexType/>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ValidateTrialAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateTrialAccountResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateTrialAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateTrialAccount">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidatePromoCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidatePromoCode">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateTrialAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateTrialAccountResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidatePromoCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidatePromoCodeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="TestCreateTrialAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:TestCreateTrialAccountResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateTrialAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateTrialAccount">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateTrialAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateTrialAccountResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="TestCreateTrialAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:TestCreateTrialAccount">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ClearCacheSoapOut">
+    <wsdl:part name="parameters" element="tns:ClearCacheResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidateTrialAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateTrialAccount">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ClearCacheSoapIn">
+    <wsdl:part name="parameters" element="tns:ClearCache">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="TrialWSSoap">
+    <wsdl:operation name="CreateTrialAccount">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates an account</wsdl:documentation>
+      <wsdl:input message="tns:CreateTrialAccountSoapIn">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateTrialAccountSoapOut">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestCreateTrialAccount">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Test Creates an account</wsdl:documentation>
+      <wsdl:input message="tns:TestCreateTrialAccountSoapIn">
+    </wsdl:input>
+      <wsdl:output message="tns:TestCreateTrialAccountSoapOut">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTrialAccount">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web service for validating a trial account</wsdl:documentation>
+      <wsdl:input message="tns:ValidateTrialAccountSoapIn">
+    </wsdl:input>
+      <wsdl:output message="tns:ValidateTrialAccountSoapOut">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidatePromoCode">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web service for validating a promo code</wsdl:documentation>
+      <wsdl:input message="tns:ValidatePromoCodeSoapIn">
+    </wsdl:input>
+      <wsdl:output message="tns:ValidatePromoCodeSoapOut">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTrialAccount">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web service for storing the customer and contact internal id from netsuite</wsdl:documentation>
+      <wsdl:input message="tns:UpdateTrialAccountSoapIn">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdateTrialAccountSoapOut">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClearCache">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service for clearing local cache</wsdl:documentation>
+      <wsdl:input message="tns:ClearCacheSoapIn">
+    </wsdl:input>
+      <wsdl:output message="tns:ClearCacheSoapOut">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TrialWSSoap" type="tns:TrialWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CreateTrialAccount">
+      <soap:operation soapAction="http://hosted.kaseya.com/webservices/CreateTrialAccount" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestCreateTrialAccount">
+      <soap:operation soapAction="http://hosted.kaseya.com/webservices/TestCreateTrialAccount" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTrialAccount">
+      <soap:operation soapAction="http://hosted.kaseya.com/webservices/ValidateTrialAccount" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidatePromoCode">
+      <soap:operation soapAction="http://hosted.kaseya.com/webservices/ValidatePromoCode" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTrialAccount">
+      <soap:operation soapAction="http://hosted.kaseya.com/webservices/UpdateTrialAccount" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClearCache">
+      <soap:operation soapAction="http://hosted.kaseya.com/webservices/ClearCache" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TrialWSSoap12" type="tns:TrialWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CreateTrialAccount">
+      <soap12:operation soapAction="http://hosted.kaseya.com/webservices/CreateTrialAccount" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestCreateTrialAccount">
+      <soap12:operation soapAction="http://hosted.kaseya.com/webservices/TestCreateTrialAccount" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTrialAccount">
+      <soap12:operation soapAction="http://hosted.kaseya.com/webservices/ValidateTrialAccount" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidatePromoCode">
+      <soap12:operation soapAction="http://hosted.kaseya.com/webservices/ValidatePromoCode" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTrialAccount">
+      <soap12:operation soapAction="http://hosted.kaseya.com/webservices/UpdateTrialAccount" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClearCache">
+      <soap12:operation soapAction="http://hosted.kaseya.com/webservices/ClearCache" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TrialWS">
+    <wsdl:port name="TrialWSSoap" binding="tns:TrialWSSoap">
+      <soap:address location="https://kpls.kaseya.net/KHService/WebServices/TrialWS/TrialWS.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="TrialWSSoap12" binding="tns:TrialWSSoap12">
+      <soap12:address location="https://kpls.kaseya.net/KHService/WebServices/TrialWS/TrialWS.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
